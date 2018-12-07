@@ -8,7 +8,7 @@ node('linux') {
        sh 'ant -f build.xml -v'
     }
     stage("Deploy") {
-       sh 'aws s3 cp test.xml s3://madhu-assignment10-bucket/test2.xml'
+       sh 'aws s3 cp *.jar s3://madhu-assignment10-bucket/.'
     }
     stage("Report") {
        sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins'
